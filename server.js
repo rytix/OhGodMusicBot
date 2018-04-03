@@ -69,7 +69,6 @@ const commands = {
 			if (!queue.hasOwnProperty(msg.guild.id)) queue[msg.guild.id] = {}, queue[msg.guild.id].playing = false, queue[msg.guild.id].songs = [];
 			queue[msg.guild.id].songs.push({url: url, title: info.title, requester: msg.author.username});
 			msg.channel.sendMessage(`added **${info.title}** to the queue`);
-			commands.play(msg);
 		});
 	},
 	'queue': (msg) => {
@@ -84,7 +83,11 @@ const commands = {
 	},
 	'reboot': (msg) => {
 		if (msg.author.id == tokens.adminID) process.exit(); //Requires a node module like Forever to work.
-	}
+	},
+	'+bj': (msg) => {
+		return msg.channel.sendMessage("Você não devia estar fazendo isso... Ela rouba...");
+	},
+
 };
 
 client.on('ready', () => {
